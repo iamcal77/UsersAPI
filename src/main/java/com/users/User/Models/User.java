@@ -16,7 +16,7 @@ public class User {
     @Column
     private String Active;
     @Column
-    private  int Balance;
+    private int Balance = 0;
     @Column
     private LocalDateTime CreatedDate;
 
@@ -67,4 +67,11 @@ public class User {
     public void setCreatedDate(LocalDateTime createdDate) {
         CreatedDate = createdDate;
     }
+
+    @PrePersist
+    protected void onCreate() {
+        CreatedDate = LocalDateTime.now();
+    }
+
+    
 }
